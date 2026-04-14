@@ -1,2 +1,3 @@
-from . import meter as meter
+from . import meter
 from . import meter_reading
+from . import res_partner

@@ -17,6 +17,7 @@ class Meter(models.Model):
         tracking=True,
     )
 
+    partner_id = fields.Many2one("res.partner", string="Location")
     reading_ids = fields.One2many("meter.reading", "meter_id")
     reading_count = fields.Integer(compute="_compute_readings", store=True)
     last_reading_id = fields.Many2one(

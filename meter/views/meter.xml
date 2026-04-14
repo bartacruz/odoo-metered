@@ -1,112 +1,117 @@
 <odoo>
 
-    <record model="ir.ui.view" id="meter_list">
-      <field name="name">Meter List View</field>
-      <field name="model">meter</field>
-      <field name="arch" type="xml">
-        <list>
-          <field name="name" />
-          <field name="last_reading_id" invisible="1"/>
-          <field name="last_reading_date" />
-          <field name="last_reading_value" />
-          <field name="last_period_days" />
-          <field name="last_period_value" />
-          <field name="uom_id" optional="show"/>
-        </list>
-      </field>
-    </record>
+  <record model="ir.ui.view" id="meter_list">
+    <field name="name">Meter List View</field>
+    <field name="model">meter</field>
+    <field name="arch" type="xml">
+      <list>
+        <field name="name" />
+        <field name="partner_id" optional="show"/>
+        <field name="last_reading_date" />
+        <field name="last_reading_value" />
+        <field name="last_period_days" />
+        <field name="last_period_value" />
+        <field name="uom_id" optional="show" />
+      </list>
+    </field>
+  </record>
 
-    <record model="ir.ui.view" id="meter_kanban">
-      <field name="name">Meter Kanban View</field>
-      <field name="model">meter</field>
-      <field name="arch" type="xml">
-        <kanban class="o_kanban_mobile">
-          <templates>
-            <t t-name="card">
-              <div class="row">
-                <div class="col-8">
-                  <field class="fw-bolder" name="name" />
-                </div>
-                <div class="col-4 text-end">
-                  <field class="badge rounded-pill" name="state" />
-                </div>
+  <record model="ir.ui.view" id="meter_kanban">
+    <field name="name">Meter Kanban View</field>
+    <field name="model">meter</field>
+    <field name="arch" type="xml">
+      <kanban class="o_kanban_mobile">
+        <templates>
+          <t t-name="card">
+            <div class="row">
+              <div class="col-8">
+                <field class="fw-bolder" name="name" />
               </div>
-              <div name="last_reading" class="row" invisible="not last_reading_id">
-                <div class="col-6">
-                  <i class="fa fa-calendar me-1" title="Last Reading" />
-                  <field name="last_reading_date" />
-                </div>
-                <div class="col-6">
-                  <i class="fa fa-tachometer me-1" title="Last Reading Value" />
-                  <field name="last_reading_value" />
-                </div>
+              <div class="col-4 text-end">
+                <field class="badge rounded-pill" name="state" />
               </div>
-              <div name="last_period" class="row" invisible="not last_reading_value">
-                <div class="col-6">
-                  <i class="fa fa-calendar" title="Last Period Days" />
-                  <field name="last_period_days" />
-                </div>
-                <div class="col-6">
-                  <i class="fa fa-tachometer" title="Last Period Value" />
-                  <field name="last_period_value" />
-                </div>
-              </div>
-            </t>
-          </templates>
-        </kanban>
-      </field>
-    </record>
-
-    <record model="ir.ui.view" id="meter_form">
-      <field name="name">Meter Form View</field>
-      <field name="model">meter</field>
-      <field name="arch" type="xml">
-        <form>
-          <header>
-            <field name="state" widget="statusbar" />
-          </header>
-          <sheet>
-            <div name="button_box" class="oe_button_box">
-              <button
-                class="oe_stat_button"
-                type="object"
-                name="action_open_readings"
-                icon="fa-tachometer"
-              >
-                <field string="Readings" name="reading_count" widget="statinfo" />
-              </button>
             </div>
-            <div class="oe_title">
-              <h1>
-                <span class="me-1">Meter</span><field name="name" placeholder="Meter name..." />
-              </h1>
-            </div>
-            <group>
-
-              <group name="last_reading" string="Last Reading">
-
-                <field name="last_reading_id" invisible="1"/>
-                <field name="last_reading_date" title="Duia" label="Date"/>
+            <div name="last_reading" class="row" invisible="not last_reading_id">
+              <div class="col-6">
+                <i class="fa fa-calendar me-1" title="Last Reading" />
+                <field name="last_reading_date" />
+              </div>
+              <div class="col-6">
+                <i class="fa fa-tachometer me-1" title="Last Reading Value" />
                 <field name="last_reading_value" />
+              </div>
+            </div>
+            <div name="last_period" class="row" invisible="not last_reading_value">
+              <div class="col-6">
+                <i class="fa fa-calendar" title="Last Period Days" />
                 <field name="last_period_days" />
+              </div>
+              <div class="col-6">
+                <i class="fa fa-tachometer" title="Last Period Value" />
                 <field name="last_period_value" />
-              </group>
-              <group name="settings" string="Settings">
-                <field name="uom_id" />
+              </div>
+            </div>
+          </t>
+        </templates>
+      </kanban>
+    </field>
+  </record>
 
-              </group>
+  <record model="ir.ui.view" id="meter_form">
+    <field name="name">Meter Form View</field>
+    <field name="model">meter</field>
+    <field name="arch" type="xml">
+      <form>
+        <header>
+          <field name="state" widget="statusbar" />
+        </header>
+        <sheet>
+          <div name="button_box" class="oe_button_box">
+            <button
+              class="oe_stat_button"
+              type="object"
+              name="action_open_readings"
+              icon="fa-tachometer"
+            >
+              <field string="Readings" name="reading_count" widget="statinfo" />
+            </button>
+          </div>
+          <div class="oe_title">
+            <h1>
+              <span class="me-2">Meter</span>
+              <field name="name" placeholder="Meter name..." class="oe_inline"/>
+            </h1>
+          </div>
+          <group>
+
+            <group name="last_reading" string="Last Reading">
+
+              <field name="last_reading_id" invisible="1" />
+              <field name="last_reading_date" title="Duia" label="Date" />
+              <field name="last_reading_value" />
+              <field name="last_period_days" />
+              <field name="last_period_value" />
             </group>
-          </sheet>
-          <chatter/>
-        </form>
-      </field>
-    </record>
+            <group name="settings" string="Settings">
+              <field name="partner_id"
+                context="{'show_address': 1}"
+                options="{'always_reload': True, 'no_quick_create': True}"
+              />
+              <field name="uom_id" />
 
-    <record model="ir.actions.act_window" id="action_meter">
-      <field name="name">Meters</field>
-      <field name="res_model">meter</field>
-      <field name="view_mode">kanban,list,form</field>
-      <field name="help">Manage your meters.</field>
-    </record>
+            </group>
+          </group>
+        </sheet>
+        <chatter />
+      </form>
+    </field>
+  </record>
+
+  <record model="ir.actions.act_window" id="action_meter">
+    <field name="name">Meters</field>
+    <field name="res_model">meter</field>
+    <field name="view_mode">kanban,list,form</field>
+    <field name="help">Manage your meters.</field>
+  </record>
 
 </odoo>
