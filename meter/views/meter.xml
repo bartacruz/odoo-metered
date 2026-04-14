@@ -109,6 +109,7 @@
 
   <record model="ir.actions.act_window" id="action_meter">
     <field name="name">Meters</field>
+    <field name="path">meters</field>
     <field name="res_model">meter</field>
     <field name="view_mode">kanban,list,form</field>
     <field name="help">Manage your meters.</field>

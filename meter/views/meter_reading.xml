@@ -31,6 +31,7 @@
 
     <record model="ir.actions.act_window" id="action_meter_reading">
       <field name="name">Meter Readings</field>
+      <field name="path">meter-readings</field>
       <field name="res_model">meter.reading</field>
       <field name="view_mode">list,form</field>
       <field name="help">Manage your meters.</field>
