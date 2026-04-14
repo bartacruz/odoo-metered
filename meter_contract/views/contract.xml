@@ -1,0 +1,14 @@
+<odoo>
+
+    <record model="ir.ui.view" id="contract_contract_form_view_inherit">
+        <field name="name">Meter Contract Form View</field>
+        <field name="inherit_id" ref="contract.contract_contract_form_view" />
+        <field name="model">contract.contract</field>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="meter_ids" widget="many2many_tags" />
+            </field>
+        </field>
+    </record>
+
+</odoo>

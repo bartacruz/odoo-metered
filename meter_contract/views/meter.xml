@@ -1,0 +1,14 @@
+<odoo>
+
+    <record model="ir.ui.view" id="meter_list">
+        <field name="name">Meter List View</field>
+        <field name="inherit_id" ref="meter.meter_list" />
+        <field name="model">meter</field>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="contract_id" optional="show" />
+            </field>
+        </field>
+    </record>
+
+</odoo>

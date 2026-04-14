@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="line_qty_formula_meter" model="contract.line.qty.formula">
+        <field name="name">Metered</field>
+        <field name="code">result = contract.meter_ids.total_period_values()</field>
+    </record>
+    <record id="default_metered_product" model="product.product">
+        <field name="name">Metered Charge</field>
+        <field name="default_code">METERED</field>
+        <field name="categ_id" ref="product.product_category_all" />
+        <field name="type">service</field>
+        <field name="list_price">1.0</field>
+        <field name="invoice_policy">delivery</field>
+        <field name="standard_price">1</field>
+        <field name="uom_id" ref="uom.product_uom_unit" />
+        <field name="uom_po_id" ref="uom.product_uom_unit" />
+        <field name="company_id" eval="[]" />
+        <field name="taxes_id" eval="[]" />
+        <field name="supplier_taxes_id" eval="[]" />
+    </record>
+
+</odoo>
