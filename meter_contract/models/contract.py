@@ -23,7 +23,7 @@ class Contract(models.Model):
                 for meter in to_add:
                     line_values = record.contract_line_ids._get_meter_line_values(meter)
                     record.contract_line_ids = [(0, 0, line_values)]
-                _logger.log(
+                _logger.info(
                     "_compute_meter_count %s %s %s",
                     to_add,
                     record,

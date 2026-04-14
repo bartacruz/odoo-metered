@@ -15,6 +15,7 @@ class Meter(models.Model):
         compute="_compute_contract_line",
         store=True,
     )
+    contracts_count = fields.Integer(compute="_compute_contract_line", store=True)
     contract_line_ids = fields.One2many(
         "contract.line", "meter_id", string="Contract Lines"
     )
@@ -42,12 +43,13 @@ class Meter(models.Model):
                 )
             record.contract_line_id = line.id
             record.contract_ids = record.contract_line_ids.mapped("contract_id").ids
-            _logger.log(
+            _logger.info(
                 "_compute_contract_line %s %s %s",
                 record,
                 record.contract_line_id,
                 record.contract_ids,
             )
+            record.contracts_count = len(record.contract_ids)
 
     @api.depends("contract_id", "contract_id.active", "last_reading_date")
     def _compute_ready_to_invoice(self):
@@ -79,3 +81,9 @@ class Meter(models.Model):
                 _("Meters not ready to invoice: %s", (self - to_invoice).mapped("name"))
             )
         return sum(to_invoice.mapped("last_period_value"))
+
+    def action_open_contracts(self):
+        self.ensure_one()
+        action = self.env.ref("contract.action_customer_contract").read()[0]
+        action["domain"] = [("id", "in", self.contract_ids.ids)]
+        return action
