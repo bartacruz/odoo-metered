@@ -5,7 +5,7 @@ This is the core module for meter devices tracking in Odoo. It introduces the fu
 ## Features
 
 - Meter Model (`meter`): Define and categorize different types of meters (water, electricity, gas, etc.). Has a phisical location, dated readings, handles preriodical values, etc.
-  Meter Readings (`meter.reading`): Track consumption through a dedicated model, maintaining a historical log of all measurements.
+- Meter Readings (`meter.reading`): Track consumption through a dedicated model, maintaining a historical log of all measurements.
   Unit of Measure Support: Compatible with standard Odoo UoM for precise consumption tracking.
 
 ## Authors
