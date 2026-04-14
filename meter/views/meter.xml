@@ -6,11 +6,12 @@
       <field name="arch" type="xml">
         <list>
           <field name="name" />
-          <field name="last_reading_id" />
+          <field name="last_reading_id" invisible="1"/>
           <field name="last_reading_date" />
           <field name="last_reading_value" />
           <field name="last_period_days" />
           <field name="last_period_value" />
+          <field name="uom_id" optional="show"/>
         </list>
       </field>
     </record>
@@ -77,18 +78,22 @@
             </div>
             <div class="oe_title">
               <h1>
-                <field name="name" placeholder="Meter name..." />
+                <span class="me-1">Meter</span><field name="name" placeholder="Meter name..." />
               </h1>
             </div>
             <group>
-              <group>
-                <field name="last_reading_id" />
-                <field name="last_reading_date" />
+
+              <group name="last_reading" string="Last Reading">
+
+                <field name="last_reading_id" invisible="1"/>
+                <field name="last_reading_date" title="Duia" label="Date"/>
                 <field name="last_reading_value" />
-              </group>
-              <group>
                 <field name="last_period_days" />
                 <field name="last_period_value" />
+              </group>
+              <group name="settings" string="Settings">
+                <field name="uom_id" />
+
               </group>
             </group>
           </sheet>

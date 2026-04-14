@@ -26,6 +26,11 @@ class Meter(models.Model):
     last_reading_date = fields.Datetime(related="last_reading_id.date")
     last_period_days = fields.Integer(compute="_compute_readings", store=True)
     last_period_value = fields.Integer(compute="_compute_readings", store=True)
+    uom_id = fields.Many2one(
+        "uom.uom",
+        string="Unit of Measure",
+        help="Default unit of measure used for readings.",
+    )
 
     @api.depends("reading_ids", "reading_ids.value", "reading_ids.date")
     def _compute_readings(self):
