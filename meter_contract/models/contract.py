@@ -57,9 +57,9 @@ class Contract(models.Model):
         today = fields.Date.context_today(self)
         not_ready = self.search(
             [
-                ("state", "=", "open"),
+                ("active", "=", True),
                 ("recurring_next_date", "<=", today),
-                ("meter_ids.ready_to_invoice", "=", False),
+                ("meters_ready_to_invoice", "=", False),
             ],
             limit=1,
         )
