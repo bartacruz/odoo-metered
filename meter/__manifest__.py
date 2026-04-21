@@ -7,14 +7,11 @@
     "category": "Services/Services",
     "version": "18.0.0.0.1",
     "installable": True,
-    "application": True,
-    # any module necessary for this one to work correctly
+    "application": False,
     "depends": ["base", "mail"],
-    # always loaded
     "data": [
         "security/ir.model.access.csv",
         "views/meter.xml",
         "views/meter_reading.xml",
-        "views/menu.xml",
     ],
 }

@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <menuitem id="menu_electric_utility" name="Electric Company" sequence="2" />
+    <menuitem id="menu_contracts" name="Contracts" parent="menu_electric_utility" sequence="1"
+        action="contract.action_customer_contract" />
+    <menuitem id="menu_meters" name="Meters" parent="menu_electric_utility" sequence="1" action="meter.action_meter" />
+    <menuitem id="menu_meter_readings" name="Readings" parent="menu_electric_utility" sequence="2"
+        action="meter.action_meter_reading" />
+</odoo>

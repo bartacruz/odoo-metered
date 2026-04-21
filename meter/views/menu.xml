@@ -1,6 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<odoo>
-    <menuitem id="menu_meter_root" name="Meteres" sequence="2"/>
-    <menuitem id="menu_meters" name="Meters" parent="menu_meter_root" sequence="1" action="action_meter"/>
-    <menuitem id="menu_meter_readings" name="Readings" parent="menu_meter_root" sequence="2" action="action_meter_reading"/>
-</odoo>
