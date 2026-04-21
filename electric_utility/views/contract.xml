@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="contract_view_kanban" model="ir.ui.view">
+        <field name="name">Contract Kanban</field>
+        <field name="model">contract.contract</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_small_column o_kanban_project_tasks">
+                <templates>
+                    <t t-name="card">
+                        <div class="row">
+                            <div class="col-8">
+                                <field class="fw-bolder" name="name" />
+                            </div>
+                            <div class="col-4 text-end">
+                                <field class="badge text-bg-info rounded-pill" name="contract_template_id" />
+                            </div>
+                        </div>
+                        <div>
+                            <field name="partner_id" />
+                        </div>
+                        <div class="row">
+                            <div class="col-8 d-flex align-items-center">
+                                <i class="me-1 fa fa-tachometer text-muted" title="Meters" />
+                                <field name="meter_ids" />
+                            </div>
+                            <div class="col-4 text-end">
+                                <field name="recurring_next_date" />
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="action_customer_contract_view_kanban" model="ir.actions.act_window.view">
+        <field name="sequence" eval="1" />
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="contract_view_kanban" />
+        <field name="act_window_id" ref="contract.action_customer_contract" />
+    </record>
+    <record id="contract.action_customer_contract_view_tree" model="ir.actions.act_window.view">
+        <field name="sequence" eval="2" />
+    </record>
+    <record id="contract.action_customer_contract" model="ir.actions.act_window">
+        <field name="name">Customer Contracts</field>
+        <field name="res_model">contract.contract</field>
+        <field name="view_mode">kanban,list,form</field>
+    </record>
+
+</odoo>

@@ -11,5 +11,6 @@
     "depends": ["meter", "meter_contract", "contract"],
     "data": [
         "views/menu.xml",
+        "views/contract.xml",
     ],
 }
